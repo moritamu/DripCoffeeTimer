@@ -6,7 +6,8 @@
 //  24/10/30 時間の設定ができるようにすること　完成11/1
 //  音を鳴らす。ブルブルも　241117音はできた。
 //  これをWatchOSに変更したい。
-//  MyDripTimerをDripCoffeeTimerに変更する26/07/03
+//  MyDripTimerをDripCoffeeTimerに変更する26/07/03 Gitを新しくする
+//  Git関連メニューは、Integrate（統合）にある。
 
 import SwiftUI
 
