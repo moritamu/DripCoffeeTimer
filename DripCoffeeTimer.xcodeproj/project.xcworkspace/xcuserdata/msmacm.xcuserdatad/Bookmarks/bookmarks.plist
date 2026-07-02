@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>top-level-items</key>
+	<array>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>35</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>34</string>
+					<key>Timestamp</key>
+					<string>777156549.677521</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>MyTimerTest1/MameSetView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>//                注ぎ時間の設定
+</string>
+				<key>leading</key>
+				<string>                .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+            HStack {
+</string>
+				<key>trailing</key>
+				<string>                Spacer()
+                ForEach(0..&lt;dripData.time.count,  id: \.self) { i in
+                    Text("\(i + 1)回")
+</string>
+			</dict>
+			<key>title</key>
+			<string>ここを配列の数で変えるられる。そのときの表示はどうなるか。id:\.selfを使わないidentifiable?</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>1</string>
+					<key>EndingLineNumber</key>
+					<string>7</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>7</string>
+					<key>Timestamp</key>
+					<string>753050777.5789109</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>MyTimerTest1/ContentView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>/</string>
+				<key>leading</key>
+				<string>//  24/10/30 時間の設定ができるようにすること　完成11/1
+//  音を鳴らす。ブルブルも　241117音はできた。
+</string>
+				<key>trailing</key>
+				<string>/  これをWatchOSに変更したい。
+//
+
+</string>
+			</dict>
+			<key>title</key>
+			<string>まずはWatchOSに変更</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>9</string>
+					<key>StartingColumnNumber</key>
+					<string>2</string>
+					<key>StartingLineNumber</key>
+					<string>8</string>
+					<key>Timestamp</key>
+					<string>777156457.788239</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>MyTimerTest1/ContentView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>//  音を鳴らす。ブルブルも　241117音はできた。
+//  これをWatchOSに変更したい。
+//</string>
+				<key>trailing</key>
+				<string>
+import SwiftUI
+
+</string>
+			</dict>
+			<key>title</key>
+			<string>Viewがごちゃごちゃしてるので分ける</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+	</array>
+</dict>
+</plist>
