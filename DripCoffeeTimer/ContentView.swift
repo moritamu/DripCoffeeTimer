@@ -59,33 +59,38 @@ struct ContentView: View {
                         }
                     }
                     HStack{
+                        Spacer()
                         Button{
                             startTimer()
                         } label: {
                             Text("スタート")
-                                .font(.title)
+                                .font(.title2)
                                 .foregroundStyle(.white)
-                                .frame(width: 120,height: 120)
+                                .frame(width: 90,height: 90)
                                 .background(in: Circle())
                                 .backgroundStyle(Color("startColor"))
                         }
+                        Spacer()
                         Button{
                             stopTimer()
                         } label: {
                             Text("ストップ")
-                                .font(.title)
+                                .font(.title2)
                                 .foregroundStyle(.white)
-                                .frame(width: 120,height: 120)
+                                .frame(width: 90,height: 90)
                                 .background(in: Circle())
                                 .backgroundStyle(Color("stopColor"))
                         }
+                        Spacer()
                     }
-                    Text(String(format: "%.1f", dripData.mame) + "g")
+                    Text(String(format: "%.1f", dripData.mame) + " g")
                         .font(.largeTitle)
-                    Text("\(dripData.kosa)")
-                    Text("\(dripData.time[0])")
-                    Text("\(dripData.time[1])")
-                    Text("\(dripData.time[2])")
+                    Text(String(format: "%.1f", dripData.kosa)+" g/100ml")
+                    HStack{
+                        Text("1:  \(dripData.time[0]) 秒,")
+                        Text("2:  \(dripData.time[1]) 秒,")
+                        Text("3:  \(dripData.time[2]) 秒")
+                    }
                 }
 
                 .onAppear{
