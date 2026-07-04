@@ -20,6 +20,9 @@ import Observation
             return mame / kosa * 100.0
         }
     }
+    var ArrayHotW: [Double] {
+        return [hotWT * 0.2,hotWT * 0.4, hotWT]
+    }
     //    var hotWF: Double {
     //        get {
     //            return mame / kosa * 20

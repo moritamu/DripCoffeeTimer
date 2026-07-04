@@ -42,13 +42,16 @@ struct ContentView: View {
                                 .font(.title2)
                             switch kaisu {
                             case 1:
-                                Text(String(format: "%.0f", dripData.hotWT * 0.2) + " g")
+//                                Text(String(format: "%.0f", dripData.hotWT * 0.2) + " g")
+                                Text(String(format: "%.0f", dripData.ArrayHotW[0]) + " g")
                                     .font(.largeTitle)
                             case 2:
-                                Text(String(format: "%.0f", dripData.hotWT * 0.4) + " g")
+//                                Text(String(format: "%.0f", dripData.hotWT * 0.4) + " g")
+                                Text(String(format: "%.0f", dripData.ArrayHotW[1]) + " g")
                                     .font(.largeTitle)
                             case 3:
-                                Text(String(format: "%.0f", dripData.hotWT) + " g")
+//                                Text(String(format: "%.0f", dripData.hotWT) + " g")
+                                Text(String(format: "%.0f", dripData.ArrayHotW[2]) + " g")
                                     .font(.largeTitle)
                             default://とりあえず書いておく
                                 Text(String(format: "%.1f", dripData.hotWT))
@@ -83,8 +86,11 @@ struct ContentView: View {
                         }
                         Spacer()
                     }
-                    Text(String(format: "%.1f", dripData.mame) + " g")
-                        .font(.largeTitle)
+                    HStack {
+                        Text(String(format: "%.1f", dripData.mame) + " g ー ")
+                        Text(String(format: "%.1f", dripData.hotWT) + " g")
+                    }
+                    .font(.headline)
                     Text(String(format: "%.1f", dripData.kosa)+" g/100ml")
                     HStack{
                         Text("1:  \(dripData.time[0]) 秒,")
