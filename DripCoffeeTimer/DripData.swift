@@ -13,28 +13,18 @@ import Observation
     var kosa: Double = 6
     //    時間を配列で、例[45,45,45] [１回目,２回目,３回目,・・・]
     //    var time: Array<Any>　ここはもう少し修正できそう
-    var time: [Int] = [45,45,45]
-    
+    var time: [Int] = [60,60,60]
+
     var hotWT: Double {
         get {
             return mame / kosa * 100.0
         }
     }
+    //注ぐお湯の量を配列で保存する。時間とタプルにしてもいい。今のところ、３回で入れる場合のみ
     var ArrayHotW: [Double] {
         return [hotWT * 0.2,hotWT * 0.4, hotWT]
     }
-    //    var hotWF: Double {
-    //        get {
-    //            return mame / kosa * 20
-    //        }
-    //    }
-    //回数を変化させる場合、計算で求められたほうが都合がいい
-    //    var hotWS: Double {
-    //        get {
-    //            return mame / kosa * 40
-    //        }
-    //    }
-    //    計算はその都度でいい
+//classなのでイニシャライザが必要。
     init(mame: Double, kosa: Double, time: [Int]) {
         self.mame = mame
         self.kosa = kosa

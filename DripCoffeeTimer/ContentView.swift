@@ -175,5 +175,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(dripData: DripData(mame: 12.0, kosa: 6.0, time: [5,10,12]))
+    ContentView(dripData: DripData(mame: 12.0, kosa: 6.0, time: [5,6,7]))
 }
