@@ -73,6 +73,9 @@ struct MameSetView: View {
                 Spacer()
             }
         }//ここで.onDisappearで設定値を書き込めばいい
+        .onDisappear {
+            dripData.saveSettinds()
+        }
     }
 }
 
