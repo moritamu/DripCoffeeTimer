@@ -25,7 +25,7 @@ import Observation
         return [hotWT * 0.2,hotWT * 0.4, hotWT]
     }
 //classなのでイニシャライザが必要。
-    init(mame: Double, kosa: Double, time: [Int]) {
+    init(mame: Double = 12, kosa: Double = 6, time: [Int] = [60, 60, 60]) {
         self.mame = mame
         self.kosa = kosa
         self.time = time

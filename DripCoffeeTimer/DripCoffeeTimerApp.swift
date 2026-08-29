@@ -11,7 +11,7 @@ import SwiftUI
 struct DripCoffeeTimerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(dripData: DripData(mame: 12.0, kosa: 6.0, time: [5,10,8]))
+            ContentView(dripData: DripData())
         }
     }
 }
