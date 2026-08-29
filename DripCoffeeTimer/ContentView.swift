@@ -174,13 +174,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    // プレビュー用のダミーデータを用意
-    // DripData/DripSettings の定義に合わせて必要なら調整してください
-    let previewSettings = DripSettings(
-        mame: 12.0,                 // 豆の量(g)
-        kosa: 6.0,
-        time: [30, 20, 15]                   // 濃さ(g/100ml)
-    )
-    let previewDripData = DripData()
+    let previewDripData = DripData()//インスタンスはinit()で初期化したもの
     ContentView(dripData: previewDripData)
 }

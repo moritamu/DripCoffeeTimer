@@ -77,12 +77,6 @@ struct MameSetView: View {
 }
 
 #Preview {
-    // プレビュー用のダミーデータを用意
-    // DripData や Settings の実際の定義に合わせて初期値を調整してください
-    let previewSettings = DripSettings(
-        mame: 12.0,                 // 豆の量(g)
-        kosa: 6.0, time: [30, 20, 15]                   // 濃さ(g/100ml)
-    )
-    let previewDripData = DripData()
+    let previewDripData = DripData()//init()で初期化されるインスタンス
     MameSetView(dripData: previewDripData)
 }
