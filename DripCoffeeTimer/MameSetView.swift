@@ -24,7 +24,7 @@ struct MameSetView: View {
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 //                format: .numberで数値を入力できる
                 HStack {
-                    TextField("豆の重さ", value: $dripData.mame, format: .number)
+                    TextField("豆の重さ", value: $dripData.settings.mame, format: .number)
                         .frame(width: 40)
                         .multilineTextAlignment(TextAlignment.trailing)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -36,19 +36,19 @@ struct MameSetView: View {
                 HStack {
                     //                注ぎ時間の設定
                     Spacer()
-                    ForEach(0..<dripData.time.count,  id: \.self) { i in
+                    ForEach(0..<dripData.settings.time.count,  id: \.self) { i in
                         Text("\(i + 1)回")
-                        TextField("お湯の注ぎ時間", value: $dripData.time[i], format: .number)
+                        TextField("お湯の注ぎ時間", value: $dripData.settings.time[i], format: .number)
                             .frame(width: 35)
                             .multilineTextAlignment(TextAlignment.trailing)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                        if i == (dripData.time.count - 1) {Text("秒")
+                        if i == (dripData.settings.time.count - 1) {Text("秒")
                         } else {Text("秒,")}
                     }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                     Spacer()
                 }
-                Picker(selection: $dripData.kosa, label: Text("濃さ")) {
+                Picker(selection: $dripData.settings.kosa, label: Text("濃さ")) {
                     Text("薄い").tag(5.0)
                     Text("普通").tag(6.0)
                     Text("やや濃い").tag(7.0)
@@ -58,7 +58,7 @@ struct MameSetView: View {
                 .pickerStyle(.segmented)
                 //            .padding(0)
                 //  コーヒーの濃さ（標準は１００ｍｌで６ｇ）
-                Text("コーヒーの濃さ：" + String(dripData.kosa) + " (g/100ml)")
+                Text("コーヒーの濃さ：" + String(dripData.settings.kosa) + " (g/100ml)")
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                 
                 //            Text("豆の重さ: " + String(format: "%.1f", dripData.mame))
@@ -77,5 +77,12 @@ struct MameSetView: View {
 }
 
 #Preview {
-    MameSetView(dripData: .init(mame: 12, kosa: 6, time: [10,20,30]))
+    // プレビュー用のダミーデータを用意
+    // DripData や Settings の実際の定義に合わせて初期値を調整してください
+    let previewSettings = DripSettings(
+        mame: 12.0,                 // 豆の量(g)
+        kosa: 6.0, time: [30, 20, 15]                   // 濃さ(g/100ml)
+    )
+    let previewDripData = DripData()
+    MameSetView(dripData: previewDripData)
 }

@@ -40,7 +40,7 @@ struct ContentView: View {
                         ProgressBar(progress: timervalue - count, initial: timervalue)
                             .frame(width: 200,height: 200)
                         VStack {
-                            Text("豆　\(Int(dripData.mame))g")
+                            Text("豆　\(Int(dripData.settings.mame))g")
 //                                .font(.title)
                                 .padding(10)
                             //                            Text("\(kaisu)回目のお湯")
@@ -78,13 +78,13 @@ struct ContentView: View {
                         Spacer()
                     }//HStack でButtonを配置
                     HStack {
-                        Text(String(format: "%.1f", dripData.mame) + " g ー ")
+                        Text(String(format: "%.1f", dripData.settings.mame) + " g ー ")
                         Text(String(format: "%.1f", dripData.hotWT) + " g")
                     }
                     .font(.headline)
-                    Text(String(format: "%.1f", dripData.kosa)+" g/100ml")
+                    Text(String(format: "%.1f", dripData.settings.kosa)+" g/100ml")
                     HStack{
-                        ForEach(Array(dripData.time.enumerated()), id: \.offset) { idx, t in
+                        ForEach(Array(dripData.settings.time.enumerated()), id: \.offset) { idx, t in
                             if idx > 0 { Text(",")}
                             Text("\(idx + 1):  \(t) 秒")
                         }//ForEach
@@ -92,9 +92,9 @@ struct ContentView: View {
                 }//VStack 30
 
                 .onAppear{
-                    if !dripData.time.isEmpty {
+                    if !dripData.settings.time.isEmpty {
                         currentIndex = 0
-                        timervalue = dripData.time[currentIndex]
+                        timervalue = dripData.settings.time[currentIndex]
                         kaisu = currentIndex + 1
                         count = 0
                     }
@@ -110,9 +110,9 @@ struct ContentView: View {
                 }//toolbar
                 .alert("終了",isPresented: $showAlert) {
                     Button("Ok") {
-                        if !dripData.time.isEmpty {
+                        if !dripData.settings.time.isEmpty {
                             currentIndex = 0
-                            timervalue = dripData.time[currentIndex]
+                            timervalue = dripData.settings.time[currentIndex]
                             kaisu = currentIndex + 1
                             count = 0
                         }
@@ -128,8 +128,8 @@ struct ContentView: View {
         count += 1
         if timervalue - count <= 0 {
             currentIndex += 1
-            if currentIndex < dripData.time.count {
-                timervalue = dripData.time[currentIndex]
+            if currentIndex < dripData.settings.time.count {
+                timervalue = dripData.settings.time[currentIndex]
                 count = 0
                 kaisu = currentIndex + 1
                 soundPlayer.play()
@@ -152,9 +152,9 @@ struct ContentView: View {
         if timervalue - count <= 0 {
             count = 0
         }
-        if dripData.time.indices.contains(currentIndex) == false, !dripData.time.isEmpty {
+        if $dripData.settings.time.indices.contains(currentIndex) == false, !dripData.settings.time.isEmpty {
             currentIndex = 0
-            timervalue = dripData.time[currentIndex]
+            timervalue = dripData.settings.time[currentIndex]
             kaisu = currentIndex + 1
             count = 0
         }
@@ -174,6 +174,13 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(dripData: DripData(mame: 12.0, kosa: 6.0, time: [5,6,7]))
+    // プレビュー用のダミーデータを用意
+    // DripData/DripSettings の定義に合わせて必要なら調整してください
+    let previewSettings = DripSettings(
+        mame: 12.0,                 // 豆の量(g)
+        kosa: 6.0,
+        time: [30, 20, 15]                   // 濃さ(g/100ml)
+    )
+    let previewDripData = DripData()
+    ContentView(dripData: previewDripData)
 }
-
