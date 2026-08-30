@@ -9,15 +9,13 @@
 //  MyDripTimerをDripCoffeeTimerに変更する26/07/03 Gitを新しくする
 //  Git関連メニューは、Integrate（統合）にある。
 // 時間や湯量は配列を使うように変更した26/07/13
+// UserDfaultを使って、入れ方の初期値を保存できるようにした。26/08/29
 
 import SwiftUI
 
 struct ContentView: View {
     @State var timerHandler: Timer?
     @State var count = 0
-
-    //      timerValueは@AppStorageで設定読み込み
-    //    @AppStorage("timer_value") var timervalue = 10
 
     @State var timervalue: Int = 10
     @State var showAlert = false
@@ -45,8 +43,20 @@ struct ContentView: View {
                                 .padding(10)
                             //                            Text("\(kaisu)回目のお湯")
                             ForEach(Array(dripData.ArrayHotW.enumerated()), id: \.offset) { idx, hotW in
+                                let isCurrent = (idx + 1) == kaisu
                                 Text("\(idx+1)回目：\(String(format: "%3d", Int(hotW)))g")
                                     .font(.headline)
+                                    .fontWeight(isCurrent ? .bold : .regular)
+                                    .foregroundStyle(isCurrent ? Color.accentColor : Color.primary)
+                                    .padding(.horizontal, isCurrent ? 8 : 0)
+                                    .padding(.vertical, isCurrent ? 4 : 0)
+                                    .background(
+                                        Group {
+                                            if isCurrent {
+                                                Capsule().fill(Color.accentColor.opacity(0.15))
+                                            }
+                                        }
+                                    )
                             }
                         }
                     }
