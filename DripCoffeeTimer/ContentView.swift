@@ -40,7 +40,7 @@ struct ContentView: View {
                         VStack {
                             Text("豆　\(Int(dripData.settings.mame))g")
 //                                .font(.title)
-                                .padding(10)
+//                                .padding(10)
                             //                            Text("\(kaisu)回目のお湯")
                             ForEach(Array(dripData.ArrayHotW.enumerated()), id: \.offset) { idx, hotW in
                                 let isCurrent = (idx + 1) == kaisu
@@ -61,12 +61,13 @@ struct ContentView: View {
                                             }
                                         }
                                     )
-                            }
-                        }
+                            }//ForEach
+                        }//プログレスバーとZ重ねているところ
                     }//ZStack プログレスバーと豆・回数表示
                     Text("残り\(max(timervalue - count, 0)) 秒")//プログレス円バーの下に表示
                         .font(.headline)
-                    HStack{//スタート・ストップボタン
+//スタート・ストップボタン
+                    HStack{
                         Spacer()
                         Button{
                             startTimer()
