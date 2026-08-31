@@ -44,22 +44,26 @@ struct ContentView: View {
                             //                            Text("\(kaisu)回目のお湯")
                             ForEach(Array(dripData.ArrayHotW.enumerated()), id: \.offset) { idx, hotW in
                                 let isCurrent = (idx + 1) == kaisu
-                                Text("\(idx+1)回目：\(String(format: "%3d", Int(hotW)))g")
+                                let indexText = "\(idx + 1)回目"
+                                let hotWText = String(format: "%3d", Int(hotW)) + "g"
+                                let timeValue = dripData.settings.time[idx]
+                                let timeText = "\(timeValue)秒"
+                                Text("\(indexText)：\(hotWText)：\(timeText)")
                                     .font(.headline)
                                     .fontWeight(isCurrent ? .bold : .regular)
-                                    .foregroundStyle(isCurrent ? Color.accentColor : Color.primary)
+                                    .foregroundStyle(isCurrent ? Color.pink : Color.primary)
                                     .padding(.horizontal, isCurrent ? 8 : 0)
                                     .padding(.vertical, isCurrent ? 4 : 0)
                                     .background(
                                         Group {
                                             if isCurrent {
-                                                Capsule().fill(Color.accentColor.opacity(0.15))
+                                                Capsule().fill(Color.pink.opacity(0.15))
                                             }
                                         }
                                     )
                             }
                         }
-                    }
+                    }//ZStack プログレスバーと豆・回数表示
                     Text("残り\(max(timervalue - count, 0)) 秒")//プログレス円バーの下に表示
                         .font(.headline)
                     HStack{//スタート・ストップボタン
@@ -90,15 +94,15 @@ struct ContentView: View {
                     HStack {
                         Text(String(format: "%.1f", dripData.settings.mame) + " g ー ")
                         Text(String(format: "%.1f", dripData.hotWT) + " g")
-                    }
+                    }//ここはプログレスバー内に表示してあるので、これを濃さ表示に変える
                     .font(.headline)
-                    Text(String(format: "%.1f", dripData.settings.kosa)+" g/100ml")
-                    HStack{
-                        ForEach(Array(dripData.settings.time.enumerated()), id: \.offset) { idx, t in
-                            if idx > 0 { Text(",")}
-                            Text("\(idx + 1):  \(t) 秒")
-                        }//ForEach
-                    }//HStack
+                    Text(String(format: "%.1f", dripData.settings.kosa)+" g/100ml")//これも濃さ表示
+//                    HStack{
+//                        ForEach(Array(dripData.settings.time.enumerated()), id: \.offset) { idx, t in
+//                            if idx > 0 { Text(",")}
+//                            Text("\(idx + 1):  \(t) 秒")
+//                        }//ForEach
+//                    }//HStack 秒数の表示、丸の中にまとめたので必要がなくなる。
                 }//VStack 30
 
                 .onAppear{
@@ -132,7 +136,7 @@ struct ContentView: View {
                 }//alert
             }//ZStack
         }//NavigationStack
-    }//someView
+    }//bar body: someView
     // ここで秒数を数える
     func countDownTimer() {
         count += 1
