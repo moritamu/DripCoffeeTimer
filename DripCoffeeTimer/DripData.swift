@@ -15,6 +15,18 @@ struct DripSettings: Codable {
     var time: [Int] = [60,60,60]
     //    時間を配列で、例[45,45,45] [１回目,２回目,３回目,・・・]
 }
+    //  ここでkosaを列挙型で定義しておく
+enum DensityLevel: Double, CaseIterable, Identifiable {
+    case 薄い = 5.0
+    case 普通 = 6.0
+    case やや濃い = 7.0
+    case 濃い = 8.0
+
+    var id: Double { self.rawValue }
+    var label: String { String(describing: self) }
+    var value: Double { self.rawValue }
+}
+
 @Observable class DripData {
     var settings: DripSettings
     private let settingsKey = "drip_settings_key"
