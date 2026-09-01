@@ -33,14 +33,16 @@ struct ContentView: View {
                     .resizable()
                     .ignoresSafeArea()
                     .scaledToFill()
-                VStack(spacing: 25.0){
+                VStack(spacing: 10.0){
+                    HStack{
+                        Text("豆：\(Int(dripData.settings.mame))g")
+                        Text("ー")
+                        Text("濃さ：" + String(format: "%.1f", dripData.settings.kosa)+" g/100ml")//濃さ表示
+                    }//豆・濃さ表示
                     ZStack {
                         ProgressBar(progress: timervalue - count, initial: timervalue)
-                            .frame(width: 200,height: 200)
+                            .frame(width: 250)
                         VStack {
-                            Text("豆　\(Int(dripData.settings.mame))g")
-//                                .font(.title)
-//                                .padding(10)
                             //                            Text("\(kaisu)回目のお湯")
                             ForEach(Array(dripData.ArrayHotW.enumerated()), id: \.offset) { idx, hotW in
                                 let isCurrent = (idx + 1) == kaisu
@@ -52,8 +54,8 @@ struct ContentView: View {
                                     .font(.headline)
                                     .fontWeight(isCurrent ? .bold : .regular)
                                     .foregroundStyle(isCurrent ? Color.pink : Color.primary)
-                                    .padding(.horizontal, isCurrent ? 8 : 0)
-                                    .padding(.vertical, isCurrent ? 4 : 0)
+                                    .padding(.horizontal, isCurrent ? 4 : 0)
+                                    .padding(.vertical, isCurrent ? 2 : 0)
                                     .background(
                                         Group {
                                             if isCurrent {
@@ -92,20 +94,7 @@ struct ContentView: View {
                         }
                         Spacer()
                     }//HStack でButtonを配置
-                    HStack {
-                        Text(String(format: "%.1f", dripData.settings.mame) + " g ー ")
-                        Text(String(format: "%.1f", dripData.hotWT) + " g")
-                    }//ここはプログレスバー内に表示してあるので、これを濃さ表示に変える
-                    .font(.headline)
-                    Text(String(format: "%.1f", dripData.settings.kosa)+" g/100ml")//これも濃さ表示
-//                    HStack{
-//                        ForEach(Array(dripData.settings.time.enumerated()), id: \.offset) { idx, t in
-//                            if idx > 0 { Text(",")}
-//                            Text("\(idx + 1):  \(t) 秒")
-//                        }//ForEach
-//                    }//HStack 秒数の表示、丸の中にまとめたので必要がなくなる。
-                }//VStack 30
-
+                }//VStack 画面構成がここまで
                 .onAppear{
                     if !dripData.settings.time.isEmpty {
                         currentIndex = 0
@@ -135,7 +124,7 @@ struct ContentView: View {
                 }message: {
                     Text("ドリップ終了です。美味しいコーヒーはできましたか。")
                 }//alert
-            }//ZStack
+            }//ZStack バックグラウンドを指定しているZ
         }//NavigationStack
     }//bar body: someView
     // ここで秒数を数える
