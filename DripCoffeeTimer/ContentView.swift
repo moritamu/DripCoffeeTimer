@@ -24,7 +24,9 @@ struct ContentView: View {
     //お湯を入れるのが何回めかのカウンター：配列timeで使う
     @State private var currentIndex: Int = 0
     let soundPlayer = SoundPlayer()
-
+    var densityLabel: DensityLevel {
+        DensityLevel(rawValue: dripData.settings.kosa) ?? .普通
+    }
     var body: some View {
 
         NavigationStack {
@@ -35,10 +37,15 @@ struct ContentView: View {
                     .scaledToFill()
                 VStack(spacing: 10.0){
                     HStack{
-                        Text("豆：\(Int(dripData.settings.mame))g")
-                        Text("ー")
-                        Text("濃さ：" + String(format: "%.1f", dripData.settings.kosa)+" g/100ml")//濃さ表示
+                        Group {
+                            Text("豆")
+                            Text("\(Int(dripData.settings.mame))")
+                            Text("g")
+                            Text(verbatim: "ー濃さ")
+                            Text(verbatim: String(describing: densityLabel))
+                        }
                     }//豆・濃さ表示
+                    .font(.title)
                     ZStack {
                         ProgressBar(progress: timervalue - count, initial: timervalue)
                             .frame(width: 250)
@@ -50,8 +57,8 @@ struct ContentView: View {
                                 let hotWText = String(format: "%3d", Int(hotW)) + "g"
                                 let timeValue = dripData.settings.time[idx]
                                 let timeText = "\(timeValue)秒"
-                                Text("\(indexText)：\(hotWText)：\(timeText)")
-                                    .font(.headline)
+                                Text(verbatim: "\(indexText)：\(hotWText)：\(timeText)")
+                                    .font(.title2)
                                     .fontWeight(isCurrent ? .bold : .regular)
                                     .foregroundStyle(isCurrent ? Color.pink : Color.primary)
                                     .padding(.horizontal, isCurrent ? 4 : 0)
@@ -66,8 +73,12 @@ struct ContentView: View {
                             }//ForEach
                         }//プログレスバーとZ重ねているところ
                     }//ZStack プログレスバーと豆・回数表示
-                    Text("残り\(max(timervalue - count, 0)) 秒")//プログレス円バーの下に表示
-                        .font(.headline)
+                    HStack(spacing: 0) {
+                        Text("残り")
+                        Text("\(max(timervalue - count, 0))")
+                        Text(" 秒")
+                    }
+                    .font(.title)
 //スタート・ストップボタン
                     HStack{
                         Spacer()
