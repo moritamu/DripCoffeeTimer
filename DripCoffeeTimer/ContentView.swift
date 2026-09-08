@@ -153,7 +153,7 @@ struct ContentView: View {
                 count = 0
                 showAlert = true
                 timerHandler?.invalidate()
-                soundPlayer.play(soundName: "owari21")
+                soundPlayer.play(soundName: "owari22")
             }
         }//if　タイマーの残りが0になったら
     }//countDownTimer
