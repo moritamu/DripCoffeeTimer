@@ -147,13 +147,13 @@ struct ContentView: View {
                 timervalue = dripData.settings.time[currentIndex]
                 count = 0
                 kaisu = currentIndex + 1
-                soundPlayer.play()
+                soundPlayer.play(soundName: "kettei")
             } else {
                 kaisu = 0
                 count = 0
                 showAlert = true
                 timerHandler?.invalidate()
-                soundPlayer.play()
+                soundPlayer.play(soundName: "owari21")
             }
         }//if　タイマーの残りが0になったら
     }//countDownTimer

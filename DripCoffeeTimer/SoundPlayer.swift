@@ -8,15 +8,13 @@
 import UIKit
 import AVFoundation
 
-
 class SoundPlayer: NSObject {
-    let musicData = NSDataAsset(name: "kettei")!.data
-    
     var player: AVAudioPlayer!
-    
-    func play() {
-            player = try! AVAudioPlayer(data: musicData)
-            player.play()
-    }
 
+    func play(soundName: String) {
+        let musicData = NSDataAsset(name: soundName)!.data
+        player = try! AVAudioPlayer(data: musicData)
+        player.play()
+    }
 }
+
