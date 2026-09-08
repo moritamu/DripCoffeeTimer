@@ -39,11 +39,11 @@ struct MameSetView: View {
                     ForEach(0..<dripData.settings.time.count,  id: \.self) { i in
                         Text("\(i + 1)回")
                         TextField("お湯の注ぎ時間", value: $dripData.settings.time[i], format: .number)
-                            .frame(width: 35)
+                            .frame(width: 36)
                             .multilineTextAlignment(TextAlignment.trailing)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         if i == (dripData.settings.time.count - 1) {Text("秒")
-                        } else {Text("秒,")}
+                        } else {Text("秒")}
                     }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                     Spacer()
@@ -65,7 +65,7 @@ struct MameSetView: View {
                 Text("お湯の量")
                 HStack {
                     ForEach(Array(dripData.ArrayHotW.enumerated()), id: \.offset) { idx, hotW in
-                        if idx > 0 {Text(" , ")}
+                        if idx > 0 {Text(",")}
                         Text("\(idx+1)回目 \(String(format: "%3d", Int(hotW)))g")
                         //                                        .padding([.bottom, .trailing])
                     }
